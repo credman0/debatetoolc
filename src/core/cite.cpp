@@ -18,7 +18,7 @@
 #include "cite.h"
 #include <QFile>
 #include <QtDebug>
-
+#include <QtGlobal>
 
 QDateTime Cite::parseDate(QString stringDate)
 {
@@ -29,6 +29,7 @@ QDateTime Cite::parseDate(QString stringDate)
            return timeTest;
        }
     }
+    Q_ASSERT(!timeTest.isValid());
     return timeTest;
 }
 
@@ -37,7 +38,7 @@ QList<QString> Cite::readDateFormats()
     QFile file("date_formats.txt");
     
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
- {
+    {
         qDebug() << "Could not read date formats";
         return QList<QString>();
     }
@@ -46,8 +47,9 @@ QList<QString> Cite::readDateFormats()
     while (!file.atEnd()) {
         QByteArray line = file.readLine();
         QString stringLine = QString::fromLatin1(line);
-        retList.append(line);
+        retList.append(stringLine.trimmed());
     }
+    qDebug() << retList;
     return retList;
     
 }

@@ -15,35 +15,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CARD_H
-#define CARD_H
+#ifndef CARDOVERLAY_H
+#define CARDOVERLAY_H
 
-#include "speechcomponent.h"
-#include "cite.h"
+#include <QtCore>
 
 /**
  * @todo write docs
  */
-class Card :  SpeechComponent
+class CardOverlay
 {
 public:
-    /**
-     * @todo write docs
-     *
-     * @return TODO
-     */
-    virtual QString getLabel() = 0;
+    static const uchar HIGHLIGHT = 0x1<<0;
+    static const uchar UNDERLINE = 0x1<<1;
 
-    /**
-     * @todo write docs
-     *
-     * @return TODO
-     */
-    virtual QString getDisplayContent() = 0;
-private: 
-    QString text;
-    Cite cite;
-    QList <QString> tags;
+    QString generateHTML(QString plaintext);
+    QString sanitizeForHTML(QString plaintext);
+    void setOverlay(quint32 start, quint32 end, uchar overlayType);
+    CardOverlay operator+(const CardOverlay& other) const;
+private:
+    QString name;
+    QList<quint16> overlayPositions;
+    QList<uchar> overlayTypes;
+    
+    void splitOverlay(quint32 index, quint16 position);
+    
+    /** Add new content to the end of the overlay list */
+    void addOverlay(quint16 length, uchar type);
+    
+    static const quint16 MAX_QUINT16;
 };
 
-#endif // CARD_H
+#endif // CARDOVERLAY_H

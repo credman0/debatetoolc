@@ -3,4 +3,5 @@ target_sources(debatetool
         speechcomponent.cpp
         cite.cpp
         card.cpp
+        cardoverlay.cpp
 )
