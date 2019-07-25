@@ -15,9 +15,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef CARD_H
+#define CARD_H
+
 #include "speechcomponent.h"
 
-SpeechComponent::SpeechComponent()
+/**
+ * @todo write docs
+ */
+class Card :  SpeechComponent
 {
-}
+public:
+    struct cite {
+    };
+    /**
+     * @todo write docs
+     *
+     * @return TODO
+     */
+    virtual QString getLabel() = 0;
 
+    /**
+     * @todo write docs
+     *
+     * @return TODO
+     */
+    virtual QString getDisplayContent() = 0;
+private: 
+    
+};
+
+#endif // CARD_H

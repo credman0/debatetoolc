@@ -15,9 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "speechcomponent.h"
+#ifndef CITE_H
+#define CITE_H
 
-SpeechComponent::SpeechComponent()
+#include <QDateTime>
+
+/**
+ * @todo write docs
+ */
+class Cite
 {
-}
+public:
+    QString author;
+    QDateTime date;
+    QString otherInfo;
+    
+    static QDateTime parseDate(QString stringDate);
+private:
+    static QList<QString> readDateFormats();
+    static const QList<QString> dateFormats;
+    
+};
 
+#endif // CITE_H

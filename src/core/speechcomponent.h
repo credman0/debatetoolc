@@ -30,13 +30,13 @@
 class SpeechComponent
 {
 public:
+    const static bool allowInBlocks = true;
+    
     /**
      * @todo write docs
      */
     SpeechComponent ();
     
-    virtual void load() = 0;
-    virtual bool isLoaded() = 0;
     virtual QString getDisplayContent() = 0;
     virtual QString getLabel() = 0;
     
