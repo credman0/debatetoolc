@@ -42,8 +42,8 @@ ApplicationWindow
                     }
                 }
                 Pane {
-                        Material.elevation: 3
-                        Layout.margins: 3
+                    Material.elevation: 3
+                    Layout.margins: 3
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
@@ -54,54 +54,64 @@ ApplicationWindow
         Item {
             ColumnLayout {
                 anchors.fill: parent
-                GridLayout {
-                    columns: 3
-                    Pane {
-                        Material.elevation: 3
-                        Layout.margins: 3
-                        Column{
-                            Label {
-                                text: "Author"
-                                
-                            }
-                            TextField {
-                                
-                            }
-                        }
-                    }
-                    Pane {
-                        Material.elevation: 3
-                        Layout.margins: 3
-                        Column{
-                            Label {
-                                text: "Date"
-                                
-                            }
-                            TextField {
-                                
-                            }
-                        }
-                    }
-                    Pane {
-                        Material.elevation: 3
-                        Layout.margins: 3
-                        Layout.rightMargin: 6
-                        Layout.fillWidth: true
+                Pane {
+                    
+                    Material.elevation: 3
+                    Layout.fillWidth: true
+                    Layout.margins: 5
+                    GridLayout {
+                        anchors.fill: parent
+                        columns: 3
                         ColumnLayout{
-                            anchors.fill: parent
                             Label {
-                                text: "Other Cite Info"
-                                Layout.fillWidth: true
+                                text: "Author"
+                                
                                 
                             }
                             TextField {
+                                    selectByMouse: true
+                                
+                            }
+                        }
+                        ColumnLayout{
+                            Label {
+                                text: "Date"
+                                
+                                
+                            }
+                            TextField {
+                                
+                                    selectByMouse: true
+                            }
+                        }
+                        ColumnLayout{
+                            Layout.fillWidth: true
+                            Label {
+                                text: "Other Cite Info"
+                                
                                 Layout.fillWidth: true
                                 
+                            }
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Label {
+                                    text: "("
+                                }
+                                TextArea {
+                                    Layout.fillWidth: true
+                                    wrapMode: TextEdit.Wrap
+                                    selectByMouse: true
+                                }
+                                Label {
+                                    text: ")"
+                                    
+                                }
                             }
                         }
                     }
                 }
                 Pane {
+                    
                     Material.elevation: 6
                     Layout.fillWidth: true
                     Layout.fillHeight: true
