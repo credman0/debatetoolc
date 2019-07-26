@@ -19,10 +19,29 @@
 
 QString Card::getLabel()
 {
-    
+    return getActiveTag()+"\n"+cite.author+" "+cite.date.toString("yy");
 }
 
 QString Card::getDisplayContent()
 {
-
+        // the overlay sanitizes the text, so don't encode it a second time
+        return cite.getDisplayContent()+"<br>"+getActiveOverlay().generateHTML(text);
+    
 }
+
+QString Card::sanitizeForHTML(QString plaintext)
+{
+    // TODO implementation
+    return plaintext;
+}
+
+CardOverlay Card::getActiveOverlay()
+{
+    
+}
+
+QString Card::getActiveTag()
+{
+    return "Hello active tag";
+}
+

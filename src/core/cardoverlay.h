@@ -30,7 +30,6 @@ public:
     static const uchar UNDERLINE = 0x1<<1;
 
     QString generateHTML(QString plaintext);
-    QString sanitizeForHTML(QString plaintext);
     void setOverlay(quint32 start, quint32 end, uchar overlayType);
     CardOverlay operator+(const CardOverlay& other) const;
 private:
@@ -38,7 +37,7 @@ private:
     QList<quint16> overlayPositions;
     QList<uchar> overlayTypes;
     
-    void splitOverlay(quint32 index, quint16 position);
+    void splitOverlay(quint32 index, quint32 position);
     
     /** Add new content to the end of the overlay list */
     void addOverlay(quint16 length, uchar type);

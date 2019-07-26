@@ -24,19 +24,14 @@
 #include "../google-diff-match-patch/diff_match_patch.h"
 #include "uuid.h"
 
+enum SpeechComponentType {card, analytic, block, speech};
+
 /**
  * @todo write docs
  */
 class SpeechComponent
 {
 public:
-    const static bool allowInBlocks = true;
-    
-    /**
-     * @todo write docs
-     */
-    SpeechComponent ();
-    
     virtual QString getDisplayContent() = 0;
     virtual QString getLabel() = 0;
     
@@ -47,6 +42,13 @@ public:
         }
         return id;
     }
+    
+    SpeechComponentType getType()
+    {
+        return type;
+    }
+protected:
+    SpeechComponentType type;
     QList<Diff> localHistory;
 private:
     uuid id;

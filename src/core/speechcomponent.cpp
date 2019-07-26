@@ -16,8 +16,3 @@
  */
 
 #include "speechcomponent.h"
-
-SpeechComponent::SpeechComponent()
-{
-}
-

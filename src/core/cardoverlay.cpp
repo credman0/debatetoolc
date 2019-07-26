@@ -18,6 +18,7 @@
 #include "cardoverlay.h"
 #include <QStringBuilder>
 #include <cstdint>
+#include "card.h"
 
 QString CardOverlay::generateHTML(QString plaintext)
 {
@@ -33,7 +34,7 @@ QString CardOverlay::generateHTML(QString plaintext)
         if (underline){
             htmlBuilder= htmlBuilder % ("<u>");
         }
-        htmlBuilder.append(sanitizeForHTML(plaintext.mid(position,position+overlayPositions[i])));
+        htmlBuilder.append(Card::sanitizeForHTML(plaintext.mid(position,position+overlayPositions[i])));
         if (underline){
             htmlBuilder= htmlBuilder %("</u>");
         }
@@ -42,7 +43,7 @@ QString CardOverlay::generateHTML(QString plaintext)
         }
         position+=overlayPositions[i];
     }
-    htmlBuilder.append(sanitizeForHTML(plaintext.mid(position)));
+    htmlBuilder.append(Card::sanitizeForHTML(plaintext.mid(position)));
     return htmlBuilder;
 }
 const quint16 CardOverlay::MAX_QUINT16 = std::numeric_limits<quint16>::max();
@@ -143,9 +144,5 @@ void CardOverlay::splitOverlay(quint32 index, quint32 position)
 }
 
 
-QString CardOverlay::sanitizeForHTML(QString plaintext)
-{
-    // TODO implementation
-    return plaintext;
-}
+
 

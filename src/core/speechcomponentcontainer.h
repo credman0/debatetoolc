@@ -26,7 +26,9 @@
 class SpeechComponentContainer : SpeechComponent
 {
 public:
-    SpeechComponentContainer();
+    SpeechComponentContainer(bool isSpeech);
+    
+    ~SpeechComponentContainer();
     
     
     /**
@@ -48,18 +50,21 @@ public:
         return components == other.components;
     }
     
-    void operator+(const SpeechComponent& component)
+    void operator+(SpeechComponent* component)
     {
-        components.append(component);
+        components.append(QSharedPointer<SpeechComponent>(component));
+    }
+    virtual QString getDisplayContent() = 0;
+    virtual QString getLabel() = 0;
+    
+protected:
+    QString getEnumeration(quint32 idx)
+    {
+        return idx +"";
     }
     
-    virtual bool canBeAdded(const SpeechComponent& component)
-    {
-        return 
-    }
-    
-private:
-    QList<SpeechComponent> components;
+    QList<QSharedPointer<SpeechComponent>> components;
+    QString name;
     
     
 };

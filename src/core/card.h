@@ -20,11 +20,12 @@
 
 #include "speechcomponent.h"
 #include "cite.h"
+#include "cardoverlay.h"
 
 /**
  * @todo write docs
  */
-class Card :  SpeechComponent
+class Card : public SpeechComponent
 {
 public:
     /**
@@ -32,18 +33,23 @@ public:
      *
      * @return TODO
      */
-    virtual QString getLabel() = 0;
+    QString getLabel() override;
 
     /**
      * @todo write docs
      *
      * @return TODO
      */
-    virtual QString getDisplayContent() = 0;
+    QString getDisplayContent() override;
+    
+    QString getActiveTag();
+    
+    static QString sanitizeForHTML(QString plaintext);
 private: 
     QString text;
     Cite cite;
     QList <QString> tags;
+    CardOverlay getActiveOverlay();
 };
 
 #endif // CARD_H

@@ -30,6 +30,8 @@ public:
     QDateTime date;
     QString otherInfo;
     
+    QString getDisplayContent();
+    
     static QDateTime parseDate(QString stringDate);
 private:
     static QList<QString> readDateFormats();

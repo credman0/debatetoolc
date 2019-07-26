@@ -16,7 +16,38 @@
  */
 
 #include "speechcomponentcontainer.h"
+#include "card.h"
 
-SpeechComponentContainer::SpeechComponentContainer()
+SpeechComponentContainer::~SpeechComponentContainer()
 {
+        if(!components.isEmpty())
+        {
+            components.clear();
+        }
+    }
+    
+
+
+SpeechComponentContainer::SpeechComponentContainer(bool isSpeech)
+{
+    if (isSpeech) {
+        type = speech;
+    } else {
+        type = block;
+    }
+}
+
+QString SpeechComponentContainer::getDisplayContent()
+{
+    QString contentsBuilder;
+    for (int i = 0; i < components.size(); i++) {
+        contentsBuilder = contentsBuilder % "<p><n>"+getEnumeration(i) + ") </n>";
+        contentsBuilder = contentsBuilder % components[i]->getDisplayContent() + "</p>";
+    }
+    return contentsBuilder;
+}
+
+QString SpeechComponentContainer::getLabel()
+{
+    return name;
 }

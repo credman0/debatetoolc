@@ -19,6 +19,7 @@
 #include <QFile>
 #include <QtDebug>
 #include <QtGlobal>
+#include "card.h"
 
 QDateTime Cite::parseDate(QString stringDate)
 {
@@ -52,6 +53,11 @@ QList<QString> Cite::readDateFormats()
     qDebug() << retList;
     return retList;
     
+}
+
+QString Cite::getDisplayContent()
+{
+    return "<c>"+ Card::sanitizeForHTML(author + " " + date.toString("yy")) + "</c> ("+Card::sanitizeForHTML(otherInfo)+")";
 }
 
 const QList<QString> Cite::dateFormats = readDateFormats();
