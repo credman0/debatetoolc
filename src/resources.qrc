@@ -1,5 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
  <qresource>
     <file>qml/main.qml</file>
+    <file>qml/CardEditor.qml</file>
+    <file>qml/CardCutter.qml</file>
  </qresource>
 </RCC>
