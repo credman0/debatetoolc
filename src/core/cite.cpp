@@ -21,11 +21,11 @@
 #include <QtGlobal>
 #include "card.h"
 
-QDateTime Cite::parseDate(QString stringDate)
+QDate Cite::parseDate(QString stringDate)
 {
-    QDateTime timeTest;
+    QDate timeTest;
     for (const QString& dateFormat: dateFormats) {
-       timeTest = QDateTime::fromString(stringDate, dateFormat); 
+       timeTest = QDate::fromString(stringDate, dateFormat); 
        if (timeTest.isValid()) {
            return timeTest;
        }

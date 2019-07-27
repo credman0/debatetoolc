@@ -27,12 +27,12 @@ class Cite
 {
 public:
     QString author;
-    QDateTime date;
+    QDate date;
     QString otherInfo;
     
     QString getDisplayContent();
     
-    static QDateTime parseDate(QString stringDate);
+    static QDate parseDate(QString stringDate);
 private:
     static QList<QString> readDateFormats();
     static const QList<QString> dateFormats;
